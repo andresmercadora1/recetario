@@ -19,7 +19,7 @@ namespace CapaDatos
             {
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.Connection = oConexion.conectar("DBRecetario");
-                oCommand.CommandText = "ActualizarReceta";
+                oCommand.CommandText = "agregar_receta";
                 oCommand.Parameters.Add("@cod_receta", receta.Cod_receta);                            
                 oCommand.Parameters.Add("@fuente_receta", receta.Fuente_receta);
                 oCommand.Parameters.Add("@ubicacion_fisica_receta", receta.Ubicacion_fisica_receta);
