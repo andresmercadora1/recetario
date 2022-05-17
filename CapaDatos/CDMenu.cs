@@ -21,7 +21,6 @@ namespace CapaDatos
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.Connection = oConexion.conectar("DBRecetario");
                 oCommand.CommandText = "agregar_menu";
-                oCommand.Parameters.AddWithValue("@cod_menu", menu.Cod_menu);
                 oCommand.Parameters.AddWithValue("@cod_receta", menu.Cod_receta);
                 oCommand.Parameters.AddWithValue("@plato_menu", menu.Precio_menu);
                 oCommand.Parameters.AddWithValue("@precio_menu", menu.Precio_menu);

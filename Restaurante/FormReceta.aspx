@@ -109,9 +109,11 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" />
+                    <asp:Label ID="lblResultado" runat="server"></asp:Label>
+                </td>
+                <td>
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click1" />
                 </td>
             </tr>
             <tr>
