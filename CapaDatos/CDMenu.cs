@@ -21,16 +21,74 @@ namespace CapaDatos
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.Connection = oConexion.conectar("DBRecetario");
                 oCommand.CommandText = "agregar_menu";
-                oCommand.Parameters.Add("@cod_menu", menu.Cod_menu);
-                oCommand.Parameters.Add("@cod_receta", menu.Cod_receta);
-                oCommand.Parameters.Add("@plato_menu", menu.Precio_menu);
-                oCommand.Parameters.Add("@precio_menu", menu.Precio_menu);
-                oCommand.Parameters.Add("@comentario_menu", menu.Comentario_menu);    
+                oCommand.Parameters.AddWithValue("@cod_menu", menu.Cod_menu);
+                oCommand.Parameters.AddWithValue("@cod_receta", menu.Cod_receta);
+                oCommand.Parameters.AddWithValue("@plato_menu", menu.Precio_menu);
+                oCommand.Parameters.AddWithValue("@precio_menu", menu.Precio_menu);
+                oCommand.Parameters.AddWithValue("@comentario_menu", menu.Comentario_menu);    
                 oCommand.ExecuteNonQuery();
                 return true;
             } catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+
+        public bool modificarMenu(CEMenu menu)
+        {
+            try
+            {
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.Connection = oConexion.conectar("DBRecetario");
+                oCommand.CommandText = "update_menu";
+                oCommand.Parameters.AddWithValue("@cod_menu", menu.Cod_menu);
+                oCommand.Parameters.AddWithValue("@cod_receta", menu.Cod_receta);
+                oCommand.Parameters.AddWithValue("@plato_menu", menu.Precio_menu);
+                oCommand.Parameters.AddWithValue("@precio_menu", menu.Precio_menu);
+                oCommand.Parameters.AddWithValue("@comentario_menu", menu.Comentario_menu);
+                oCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool eliminarMenu(CEMenu menu)
+        {
+            try
+            {
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.Connection = oConexion.conectar("DBRecetario");
+                oCommand.CommandText = "delete_menu";
+                oCommand.Parameters.AddWithValue("@cod_menu", menu.Cod_menu);
+                oCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public DataSet consultarMenu(CEMenu menu)
+        {
+            try
+            {
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.Connection = oConexion.conectar("DBRecetario");
+                oCommand.CommandText = "delete_menu";
+                oCommand.Parameters.AddWithValue("@cod_menu", menu.Cod_menu);
+                SqlDataAdapter dat = new SqlDataAdapter(oCommand);
+                DataSet ds = new DataSet();
+                dat.Fill(ds);
+                return ds;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
